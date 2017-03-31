@@ -1,5 +1,7 @@
 var img = document.getElementsByClassName("animal");
 var select = document.getElementById("select");
+var option = select.querySelectorAll("option");
+
 
 select.onchange = function(){
   if(select.value == "original"){
@@ -12,29 +14,36 @@ select.onchange = function(){
   }
   switch (select.value) {
     case "sepia":
-                  for(i=0; i<img.length;i++){
-                    img[i].classList.add("sepia");
-                    img[i].classList.remove("blanco-negro");
-                    img[i].classList.remove("invertir-colores");
-                  }
+                cambiarClase(img,select.value);
+
       break;
     case "invertir-colores":
-                  for(i=0; i<img.length;i++){
-                    img[i].classList.add("invertir-colores");
-                    img[i].classList.remove("sepia");
-                    img[i].classList.remove("blanco-negro");
+                cambiarClase(img,select.value);
 
-                  }
       break;
     case "blanco-negro":
-                  for(i=0; i<img.length;i++){
-                    img[i].classList.add("blanco-negro");
-                    img[i].classList.remove("sepia");
-                    img[i].classList.remove("invertir-colores");
-                                        
-                  }
+                cambiarClase(img,select.value);
+
       break;
     default:
 
   }
+}
+
+function cambiarClase(img,clase){
+console.log(option);
+  img.forEach(function(item){
+    item.classList.add(clase);
+
+  });
+  for(i=0; i<img.length;i++){
+    img[i].classList.add(clase);
+    for(j=2; j<option.length;j++){
+      if(option[j].value!=clase){
+        img[i].classList.remove(option[j].value);
+
+      }
+    }
+
+}
 }
