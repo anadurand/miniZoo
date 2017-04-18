@@ -31,11 +31,7 @@ select.onchange = function(){
 }
 
 function cambiarClase(img,clase){
-console.log(option);
-  img.forEach(function(item){
-    item.classList.add(clase);
 
-  });
   for(i=0; i<img.length;i++){
     img[i].classList.add(clase);
     for(j=2; j<option.length;j++){
